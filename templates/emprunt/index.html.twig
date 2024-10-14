@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Emprunter un objet{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Réserver l'objet</h1>
+    <div class="row">
+        <div class="col">
+            <h2>{{ objet.nom }}</h2>
+            <p>catégorie : {{ objet.categorie.name }} | {{ objet.categorie.points }}</p>
+            <img src="{{ asset('uploads/'~ objet.image) }}" alt="">
+        </div>
+        <div class="col">{{ form(formulaire) }}</div>
+    </div>
+</div>
+
+{% endblock %}

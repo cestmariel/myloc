@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+{% block title %}Objet à louer entre particuliers{% endblock %}
+{% block body %}
+    <div class="container">
+        <h1>{{ objet.nom }}</h1>
+        <img src="{{ asset('uploads/'~ objet.image) }}" alt="" class="width100">
+        <div class="">
+            <h5 class="">{{ objet.nom }}</h5>
+            <div class="row">
+                <small>Propriétaire : {{ objet.user.prenom }} {{ objet.user.nom }}</small>
+                <small>Catégorie : {{ objet.categorie }}</small>
+                <small>Points : {{ categorie.points }}</small>
+            </div>
+            <p class="">{{ objet.description|raw }}</p>
+            <a href="/emprunt/{{ objet.id }}" class="btn btn-info">Réserver</a>
+        </div>    
+    </div>
+{% endblock %}

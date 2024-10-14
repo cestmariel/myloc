@@ -1,3 +1,214 @@
 body {
-    background-color: skyblue;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    margin: 0;
+}
+
+main {
+    flex: 1;
+}
+
+.container {
+    margin-bottom: 2em;
+}
+
+.width100 {
+    width: 150px;
+}
+
+.width50 {
+    width: 50px;
+    margin: 1em;
+}
+
+.width100:hover {
+    transform: scale(1.2);
+    transition: 0.4s ease;
+}
+
+h1 {
+    margin: 1em 0;
+}
+
+h2 {
+    margin-top: 1em;
+}
+
+a {
+    text-decoration: none;
+    color: rgb(66, 141, 212)
+}
+
+a:hover {
+    color: rgb(19, 44, 68);
+    transition: opacity 0.3s ease;
+}
+
+.accueil {
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 10em 6em;
+    color:rgb(39, 39, 39);
+    font-weight: 600;
+    min-height: 600px;
+    margin-bottom: 2em;
+}
+
+#annonce {
+    background-color: rgba(255, 255, 255, 0.522);
+    padding: 1em 3em 3em;
+    margin: 0 15em;
+}
+
+.height100 {
+    height: 150px;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.white {
+    color: white;
+}
+
+.user:hover {
+    color: grey;
+    transition: opacity 0.3s ease;
+}
+
+.points {
+    font-size: 1.5em;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 2em;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr:nth-child(odd) {
+    background-color: #ffffff;
+}
+
+th {
+    background-color: #0dcaf0;
+    color: white;
+}
+
+.center {
+    text-align: center;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+}
+
+.dispFlex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.bouton {
+    color: rgb(19, 44, 68);
+    background-color: #f5e616;
+    padding: 1em;
+    align-content: center;
+    border-radius: 25px;
+}
+
+.bouton:hover {
+    color: white;
+    background-color: rgb(19, 44, 68);
+    padding: 1em;
+    align-content: center;
+    border-radius: 25px;
+}
+
+.scale {
+    transition: transform 0.3s ease;
+}
+
+.scale:hover {
+    transform: scale(1.3);
+}
+
+.plein {
+    margin-bottom: -2em;
+    color: white;
+    background-color:rgb(19, 44, 68);
+}
+
+#offre {
+    padding: 8em;
+    color:#ffffff;
+    text-align: center;
+}
+
+.big {
+    font-size: xx-large;
+    font-weight: bold;
+    background-color: #0d6dfd9e;
+    padding: 2px 5px;
+    border-radius: 5px;
+}
+
+#formRegister {
+    margin-left: 5em;
+}
+
+
+/******************************************************************/
+/**                           FOOTER                             **/
+/******************************************************************/
+
+footer {
+    background-color: rgb(9, 13, 34);
+    color: #fff;
+    padding: 2em 0;
+    margin-top: auto;
+}
+
+.footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+footer a {
+    color: white; /* Couleur du texte en blanc */
+    text-decoration: none; /* Supprime le soulignement */
+    transition: opacity 0.3s ease; /* Transition douce pour l'effet hover */
+}
+
+footer a:hover {
+    opacity: 0.7; /* Légère transparence au survol */
+    color:white;
+}
+
+footer ul {
+    list-style-type: none; /* Supprime les puces de la liste */
+    padding: 0;
+    margin: 0;
+    display: flex; /* Aligne les éléments horizontalement */
+}
+
+footer ul li {
+    margin-right: 20px; /* Espace entre les éléments de la liste */
+}
+
+footer p {
+    margin: 0;
 }

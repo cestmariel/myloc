@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mon profil{% endblock %}
+
+{% block body %}
+
+<div class="container">
+    <h1>Tableau de bord</h1>
+    <p>Bonjour {{ user.prenom }} !</p>
+
+    <div>
+        <div>
+            <h2>Mes points</h2>
+            <p>Au {{ "now"|date("d/m/Y") }}, vous avez  <span class="points">{{ user.points }}</span> points dans votre cagnotte.</p>
+        </div>
+        <div>
+            <div class="dispFlex">
+                    <h2>Mes objets</h2>
+                    <a href="/objets/add"><i class="fa-solid fa-plus bouton scale"></i></a>
+            </div>
+
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom de l'objet</th>
+                    <th>Description</th>
+                    <th>Modification</th>
+                    <th>Suppression</th>
+                    
+                </tr>
+                
+                {% for objet in user.objets %}
+                <tr>
+                    <td><img src="{{ asset('uploads/'~ objet.image) }}" alt="" class="width50"></td>
+                    <td><a href="/objets/{{objet.id}}">{{ objet.nom }}</a></td>
+                    <td>{{ objet.description|striptags|u.truncate(150, '...', true)|raw }}</td>
+                    <td class="center"><a href="/objets/modif/{{objet.id}}"><i class="fa-solid fa-pen scale"></i></a></td>
+                    <td class="center">
+                        <form method="post" action="{{ path('app_objets_supprimer', {'id': objet.id}) }}" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cet objet ?');" style="display: inline-block;">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ objet.id) }}">
+                            <button type="submit" class="btn btn-link p-0 scale"><i class="fa-solid fa-xmark"></i></button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <div class="dispFlex mt-5">
+            <h2>Mes emprunts</h2>
+            <a href="/objets"><i class="fa-solid fa-plus bouton scale"></i></a>
+        </div>
+        <table>
+                <tr>
+                    <th>Objet</th>
+                    <th>Image</th>
+                    <th>Propriétaire</th>
+                    <th>Date d'emprunt</th>
+                    <th>Date du retour</th>                    
+                </tr>
+                {% for emprunt in user.emprunts %}
+                    <tr>
+                        
+                        <td><a href="{{ path('app_objets_show', {'id': emprunt.objet.id}) }}">{{ emprunt.objet.nom }}</a></td>
+                        <td><img src="{{ asset('uploads/'~ emprunt.objet.image) }}" alt="" class="width50"></td>
+                        <td>{{ emprunt.user.prenom }} {{ emprunt.user.nom }}</td>
+                        <td class="center">{{ emprunt.debut|date("d/m/Y")}}</td>
+                        <td class="center">{{ emprunt.fin|date("d/m/Y") }}</td>
+                    </tr>
+                {% endfor %}
+            </table>
+
+    </div>
+</div>
+{% endblock %}

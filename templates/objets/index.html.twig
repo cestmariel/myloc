@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Objets à louer entre particuliers{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Tous nos objets en location</h1>
+        <div class="row row-cols-1 row-cols-md-4 g-2 m-2">
+        
+            {% for objet in objets %}
+                    <div class="col">
+                        <div class="card p-2">
+                            <a href="/objets/{{objet.id}}"><img src="{{ asset('uploads/'~ objet.image) }}" class="card-img-top width100" alt=""></a>
+                            <div class="card-body">
+                                <a href="/objets/{{objet.id}}">
+                                    <h5 class="card-title">{{ objet.nom }}</h5>
+                                </a>
+                                <p class="card-text">{{ objet.description|striptags|u.truncate(150, '...', true)|raw }}</p>
+                                <a href="/emprunt/{{objet.id}}" class="btn btn-info">Réserver</a>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Location de particulier à particulier{% endblock %}
+
+{% block body %}
+
+        <div class="accueil" style="background-image: url('{{ asset('bundles/easyadmin/images/site/jardiner.jpg') }}');">
+            <div id="annonce">
+                <h1>Louez et empruntez vos outils</br>facilement et gratuitement</h1>
+                <p>Optez pour la location entre particuliers, à proximité de chez vous.</br>
+                Une simple recherche et vous trouverez votre matériel à louer.</p>
+            </div>
+        </div>
+        <div class="container">
+        <h2>Nos catégories</h2>
+        <div class="row row-cols-1 row-cols-md-4 g-2 m-2">
+            {% for categorie in global_categories.getAllCategories %}
+                <div class="col">
+                    <div class="card p-2 align-center">
+                        <a href="/categories/{{categorie.id}}"><h3>{{ categorie.name }}</h3></a>
+                            {% if categorie.objets is not empty %}
+                            {% set premierObjet = categorie.objets|first %}
+                            <a href="/categories/{{categorie.id}}">
+                                <img src="{{ asset('uploads/' ~ premierObjet.image) }}" alt="" class="height100">
+                            </a>
+                            {% endif %}
+                    </div>
+                </div>
+            
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}
